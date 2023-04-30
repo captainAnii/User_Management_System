@@ -1,6 +1,7 @@
 package com.geekster.User_Management_System.controller;
 
 import com.geekster.User_Management_System.model.User;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class UserController {
     private UserServices userServices;
 
     @PostMapping("/addUser")
-    public ResponseEntity<User> addUser(@RequestBody User user) {
+    public ResponseEntity<User> addUser(@Valid  @RequestBody User user) {
         User addedUser = userServices.addUser(user);
         return new ResponseEntity<>(addedUser, HttpStatus.CREATED);
     }
